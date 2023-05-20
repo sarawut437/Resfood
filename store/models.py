@@ -9,11 +9,16 @@ class Store(models.Model):
     dle_flg = models.BooleanField(default=False)
     user_id_main = models.IntegerField(blank=True,null=True)
 
+    def __str__(self):
+        return self.name 
 
 class Zone(models.Model):
     name_zone = models.CharField(max_length=50,blank=True,null=True)
     id_store = models.ForeignKey(Store,on_delete=models.DO_NOTHING,blank=True,null=True)
     dle_flg = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Tables(models.Model):
@@ -21,6 +26,9 @@ class Tables(models.Model):
     id_zone = models.ForeignKey(Zone,on_delete=models.DO_NOTHING,blank=True,null=True)
     id_store = models.ForeignKey(Store,on_delete=models.DO_NOTHING,blank=True,null=True)
     dle_flg = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 
 class Menu(models.Model):
     name_menu = models.CharField(max_length=50,blank=True,null=True)
@@ -32,9 +40,15 @@ class Menu(models.Model):
     id_store = models.ForeignKey(Store,on_delete=models.DO_NOTHING,blank=True,null=True)
     dle_flg = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.name
+
 class StaffStore(models.Model):
     user_id = models.IntegerField(blank=True,null=True)
     id_store = models.ForeignKey(Store,on_delete=models.DO_NOTHING,blank=True,null=True)
     dle_flg = models.BooleanField(default=False)
     role_staff_id = models.IntegerField(blank=True,null=True)
+
+    def __str__(self):
+        return self.name
 
